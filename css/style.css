@@ -29,7 +29,7 @@ p {
 
 }
 #canvasContainer {
-  
+  display:block;
   padding-top: 30px;
   height: auto;
   text-align: center;
