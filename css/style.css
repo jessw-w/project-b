@@ -1,6 +1,7 @@
 html,
 body {
   height: 100%;
+  background-color: rgb(120, 134, 205)
 }
 
 body,
@@ -13,8 +14,65 @@ h6,
 p {
   margin: 0;
   padding: 0;
+  
 }
+#ads{
+  margin-top: 5px;
+}
+#ads1{
+  float:left;
+  display: block;
+}
+#ads2{
+  float:right;
+  display: block;
 
+}
 #canvasContainer {
   display: block;
+padding-top: 30px;
+  size: 500px;
+  text-align: center;
+  position: relative;
+  font-size: larger;
+  
+}
+
+
+#banner{
+  height: auto;
+  margin-top: -20px;
+  text-align: center;
+  font-size: 25px;
+  padding-bottom: 10px;
+  background-color: rgb(142, 124, 195);
+}
+
+
+#navigation{
+  background-color: rgb(142, 124, 195);
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: white;
+  text-align: center;
+  font-size: 30px;
+  padding: 15px 25px;
+  text-decoration: wavy;
+  color: black;
+}
+#navigation :hover{
+  background-color: white;
+  color: black;
+}
+
+#navigation :active{
+  background-color: antiquewhite;
+}
+.active{
+  padding:15px;
+}
+a {
+  padding:15px;
+  color:black;
+  text-decoration: none;
 }
