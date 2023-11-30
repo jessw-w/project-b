@@ -26,12 +26,11 @@ p {
 #ads2{
   float:right;
 
-
 }
 #canvasContainer {
   display:block;
   padding-top: 30px;
-  height: auto;
+  height:auto;
   text-align: center;
   font-size: larger;
   
