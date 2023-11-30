@@ -33,7 +33,7 @@ const player = new Person("Player", 100, 10);
 
 function setup() {
   input = createInput();
-  input.position(312.5);
+  input.position(625);
   let canvas = createCanvas(800, 600);
   //canvas.parent("canvasContainer");
 
