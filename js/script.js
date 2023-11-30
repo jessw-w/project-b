@@ -1,9 +1,6 @@
 var textfield;
 var fruits;
 var correctWord;
-var img;
-
-img = loadImage('assets/bg.PNG');
 
 // Our object for the player/boss
 class Person {
@@ -39,6 +36,7 @@ function setup() {
   input.position(312.5);
   let canvas = createCanvas(800, 600);
   //canvas.parent("canvasContainer");
+
   // This variable stores whatever the player types
   textfield = "";
   redrawBackground();
@@ -55,7 +53,6 @@ function setup() {
 function redrawBackground() {
   clear();
   background(220);
-
 }
 
 // Function to fetch and load the JSON file
