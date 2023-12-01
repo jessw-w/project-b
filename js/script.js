@@ -33,9 +33,9 @@ const player = new Person("Player", 100, 10);
 
 function setup() {
   input = createInput();
-  input.position(625);
+  input.position(750);
   let canvas = createCanvas(800, 600);
-  //canvas.parent("canvasContainer");
+  canvas.parent("canvasContainer");
 
   // This variable stores whatever the player types
   textfield = "";
@@ -134,7 +134,8 @@ function draw() {
   textSize(20)
   text("Player HP: " + player.getHP(), 5, 30);
   text("Boss HP: " + boss.getHP(), 673, 30);
-
+drawPlayer();
+  drawBoss();
   drawHealthBars();
 }
 
@@ -166,4 +167,28 @@ function drawHealthBars() {
   rect(800, 40, -barWidth, barHeight);
   fill(255, 0, 0);
   rect(800, 40, map(boss.getHP(), 0, -100, 0, barWidth), barHeight);
+}
+
+function drawPlayer(){
+  fill(255);
+  line(200, 230, 200,350); // Body
+  line(200, 250, 170, 300); //la
+  line(230, 240, 170, 300); //la
+  line(200, 250, 230, 300); //ra
+  line(250, 250, 230, 300); //ra
+  line(200, 350, 180, 450); //ll
+  line(200, 350, 220, 445); //rl
+   ellipse(200, 200, 70, 70); //head
+}
+
+function drawBoss(){
+  fill(255);
+  line(600, 230, 600,350); // Body
+  line(600, 250, 630, 300); //la
+  line(570, 240, 630, 300); //la
+  line(600, 250, 570, 300); //ra
+  line(570, 250, 570, 300); //ra
+  line(600, 350, 620, 450); //ll
+  line(600, 350, 580, 445); //rl
+   ellipse(600, 200, 70, 70); //head
 }
