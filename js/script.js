@@ -1,6 +1,24 @@
 var textfield;
 var fruits;
 var correctWord;
+var img;
+var img1;
+var img2;
+var img3;
+var img4;
+var img5;
+var img6;
+let timer = 60
+let attack = -1;
+
+function preload() {
+  img = loadImage('assets/bg1.png');
+  img1 = loadImage('assets/bocchi.png');
+  img2 = loadImage('assets/kilua.jpg');
+  img3 = loadImage('assets/boss.png');
+  img4 = loadImage('assets/atk1.png')
+  
+}
 
 // Our object for the player/boss
 class Person {
@@ -33,8 +51,10 @@ const player = new Person("Player", 100, 10);
 
 function setup() {
   input = createInput();
-  input.position(750);
+  input.size(400,40)
+  input.position(600);
   let canvas = createCanvas(800, 600);
+  background(img);
   canvas.parent("canvasContainer");
 
   // This variable stores whatever the player types
@@ -52,7 +72,7 @@ function setup() {
 // Redraw the background
 function redrawBackground() {
   clear();
-  background(220);
+  background(img);
 }
 
 // Function to fetch and load the JSON file
@@ -83,7 +103,7 @@ function draw() {
   //text(textfield, 100, 100);  // For debugging
 
   textSize(32);
-  text(correctWord, 10,550);
+  text(correctWord, 330,550);
   reset = false;
 
   // Check if the player typed the wrong word
@@ -94,14 +114,26 @@ function draw() {
     player.takeDMG(boss.getATK());
   }
 
-  // Check if the player finished typing
-  if (textfield == correctWord) {
-    text("Correct!", 100, 150);
+// Check if the player finished typing
+if (textfield == correctWord) {
+  //text("Correct!", 270, 150);
+
+ // attk
+  if (attack === -1) {
+    attack = frameCount;
+    console.log(frameCount);
+    image(img4, 250, 200, 300, 350);
+  }
+
+  // frame for attacking
+  if (frameCount - attack >= frameRate()) {
+    boss.takeDMG(player.getATK());
     reset = true;
 
-    // Do dmg to the boss
-    boss.takeDMG(player.getATK());
+    // Reset attackFrame for the next attack
+    attack = -1;
   }
+}
 
   if (reset) {
     // Redraw the canvas
@@ -119,6 +151,7 @@ function draw() {
     redrawBackground();
     textSize(64);
     text("You Won", 280, 325);
+    
   }
 
   // Check if lost
@@ -127,19 +160,37 @@ function draw() {
     redrawBackground();
     textSize(64);
     text("You Lose", 270, 325);
+    
   }
 
+
   // Draw healthbar
-  // TODO: change this
-  textSize(20)
+  // Draw the health bars, player, boss, and other elements
+
+
   text("Player HP: " + player.getHP(), 5, 30);
-  text("Boss HP: " + boss.getHP(), 673, 30);
-drawPlayer();
+  text("Boss HP: " + boss.getHP(), 595, 30);
+  drawPlayer();
   drawBoss();
   drawHealthBars();
+  timing();
+
 }
 
 // When the player type anything, it will be added to textfield
+function timing(){
+  if (frameCount % 60 == 0 && timer > 0) {
+    timer--;
+  }
+  
+  textSize(72);
+  text(timer, 365, 80);
+  
+  if (timer == 0) {
+    text("GAME OVER", 200,325);
+  }
+  
+}
 function keyTyped() {
   textfield += key;
 }
@@ -167,28 +218,12 @@ function drawHealthBars() {
   rect(800, 40, -barWidth, barHeight);
   fill(255, 0, 0);
   rect(800, 40, map(boss.getHP(), 0, -100, 0, barWidth), barHeight);
-}
 
+  
+}
 function drawPlayer(){
-  fill(255);
-  line(200, 230, 200,350); // Body
-  line(200, 250, 170, 300); //la
-  line(230, 240, 170, 300); //la
-  line(200, 250, 230, 300); //ra
-  line(250, 250, 230, 300); //ra
-  line(200, 350, 180, 450); //ll
-  line(200, 350, 220, 445); //rl
-   ellipse(200, 200, 70, 70); //head
+  image(img1, 50, 20, 250, 650);
 }
-
 function drawBoss(){
-  fill(255);
-  line(600, 230, 600,350); // Body
-  line(600, 250, 630, 300); //la
-  line(570, 240, 630, 300); //la
-  line(600, 250, 570, 300); //ra
-  line(570, 250, 570, 300); //ra
-  line(600, 350, 620, 450); //ll
-  line(600, 350, 580, 445); //rl
-   ellipse(600, 200, 70, 70); //head
+  image(img3, 540, 90,220,390);
 }
