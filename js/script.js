@@ -105,7 +105,7 @@ function draw() {
   textSize(32);
   text(correctWord, 330,550);
   //TODO checkis there a way to make this center all the time
-} 
+
  
   reset = false;
 
@@ -178,7 +178,6 @@ if (textfield == correctWord) {
   drawBoss();
   drawHealthBars();
   timing();
-
 }
 
 // When the player type anything, it will be added to textfield
