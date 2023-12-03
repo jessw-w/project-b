@@ -104,6 +104,8 @@ function draw() {
 
   textSize(32);
   text(correctWord, 330,550);
+  //TRUST is there a way to make this center all the time
+ 
   reset = false;
 
   // Check if the player typed the wrong word
@@ -133,6 +135,7 @@ if (textfield == correctWord) {
     // Reset attackFrame for the next attack
     attack = -1;
   }
+  //TRUST did i do right idfk
 }
 
   if (reset) {
@@ -151,7 +154,7 @@ if (textfield == correctWord) {
     redrawBackground();
     textSize(64);
     text("You Won", 280, 325);
-    
+    //TRUST fatter text at the end
   }
 
   // Check if lost
@@ -160,7 +163,7 @@ if (textfield == correctWord) {
     redrawBackground();
     textSize(64);
     text("You Lose", 270, 325);
-    
+    //TRUST fatter text at the end
   }
 
 
@@ -188,8 +191,9 @@ function timing(){
   
   if (timer == 0) {
     text("GAME OVER", 200,325);
+
   }
-  
+  //TRUST time
 }
 function keyTyped() {
   textfield += key;
@@ -218,8 +222,6 @@ function drawHealthBars() {
   rect(800, 40, -barWidth, barHeight);
   fill(255, 0, 0);
   rect(800, 40, map(boss.getHP(), 0, -100, 0, barWidth), barHeight);
-
-  
 }
 function drawPlayer(){
   image(img1, 50, 20, 250, 650);
