@@ -104,7 +104,8 @@ function draw() {
 
   textSize(32);
   text(correctWord, 330,550);
-  //TRUST is there a way to make this center all the time
+  //TODO checkis there a way to make this center all the time
+} 
  
   reset = false;
 
@@ -135,7 +136,7 @@ if (textfield == correctWord) {
     // Reset attackFrame for the next attack
     attack = -1;
   }
-  //TRUST did i do right idfk
+  //TODO check
 }
 
   if (reset) {
@@ -154,7 +155,7 @@ if (textfield == correctWord) {
     redrawBackground();
     textSize(64);
     text("You Won", 280, 325);
-    //TRUST fatter text at the end
+    //TODO fatter text at the end
   }
 
   // Check if lost
@@ -163,7 +164,7 @@ if (textfield == correctWord) {
     redrawBackground();
     textSize(64);
     text("You Lose", 270, 325);
-    //TRUST fatter text at the end
+    //TODO fatter text at the end
   }
 
 
@@ -193,7 +194,7 @@ function timing(){
     text("GAME OVER", 200,325);
 
   }
-  //TRUST time
+  //TODO time overlapp
 }
 function keyTyped() {
   textfield += key;
