@@ -82,6 +82,28 @@ function setup() {
     console.log(correctWord);
     console.log(fruits);
   });
+  
+  restartButton = createButton('Restart');
+  restartButton.position(500);
+  restartButton.mouseClicked(restartGame);
+}
+
+function restartGame() {
+  boss.hp = 100;
+  player.hp = 100;
+  timer = 60;
+  attack = -1;
+  song.stop();
+  atksound.stop();
+  bossatk.stop();
+  losesound.stop();
+  winsound.stop();
+
+  correctWord = getFruit();
+
+  redrawBackground();
+  song.play();
+  song.setVolume(0.5);
 }
 
 // Redraw the background
@@ -182,7 +204,6 @@ if (textfield == correctWord) {
     image(img6, 320, 0,520,690);
     text("You Won", 280, 325);
     winsound.play();
-
     //TODO fatter text at the end and the sound sounds a bit cursed...
   }
 
@@ -197,6 +218,7 @@ if (textfield == correctWord) {
     image(img2, 20, 130,300,300) 
     text("You Lose", 270, 325);
     losesound.play();
+
   
 }
   
