@@ -14,7 +14,6 @@ let attack = -1;
 function preload() {
   img = loadImage('assets/bg1.png');
   img1 = loadImage('assets/bocchi.png');
-  img2 = loadImage('assets/kilua.jpg');
   img3 = loadImage('assets/boss.png');
   img4 = loadImage('assets/atk1.png')
   
@@ -101,7 +100,13 @@ function getFruit() {
 
 function draw() {
   //text(textfield, 100, 100);  // For debugging
-
+  drawPlayer();
+  drawBoss();
+  drawHealthBars();
+  timing();
+  fill(255);
+  rect(0,500,800,200)
+  fill(255,0,0);
   textSize(32);
   text(correctWord, 330,550);
   //TODO checkis there a way to make this center all the time
@@ -174,10 +179,6 @@ if (textfield == correctWord) {
 
   text("Player HP: " + player.getHP(), 5, 30);
   text("Boss HP: " + boss.getHP(), 595, 30);
-  drawPlayer();
-  drawBoss();
-  drawHealthBars();
-  timing();
 }
 
 // When the player type anything, it will be added to textfield

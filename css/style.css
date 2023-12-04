@@ -11,9 +11,26 @@ h3,
 h4,
 h5,
 h6,
-p {
+p{
   margin: 0;
-  padding: 0;
+}
+
+
+.button {
+  
+  display: inline-block;
+  background-color: antiquewhite;
+  padding: 15px 32px;
+  text-align: center;
+  margin-left: 30%;
+
+}
+
+#intro{
+  margin: 20px;
+  padding: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 22px;
   
 }
 #ads{
@@ -21,10 +38,16 @@ p {
 }
 #ads1{
   float:left;
+  padding: 15px;
  
 }
 #ads2{
   float:right;
+ padding: 15px;
+
+}
+#ads4{
+  display: flex;
 
 }
 #canvasContainer {
@@ -34,6 +57,12 @@ p {
   text-align: center;
   font-size: larger;
   
+}
+
+#side content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
