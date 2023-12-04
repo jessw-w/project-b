@@ -8,15 +8,29 @@ var img3;
 var img4;
 var img5;
 var img6;
+var img7;
+var atksound;
+var losesound;
+var winsound;
+var bossatk;
+var song;
 let timer = 60
 let attack = -1;
 
 function preload() {
+  song = loadSound('assets/aqw song.mp3')
+  atksound = loadSound('assets/atksound.mp3')
+  losesound = loadSound('assets/losesound.mp3')
+  winsound = loadSound('assets/winsound.mp3')
+  bossatk =  loadSound('assets/bossatk.mp3')
   img = loadImage('assets/bg1.png');
   img1 = loadImage('assets/bocchi.png');
+  img2 = loadImage('assets/bocchi3.png');
   img3 = loadImage('assets/boss.png');
   img4 = loadImage('assets/atk1.png')
-  
+  img5 = loadImage('assets/bocchi2.png')
+  img6 = loadImage('assets/boss2.png')
+  img7 = loadImage('assets/boss3.png');
 }
 
 // Our object for the player/boss
@@ -49,6 +63,8 @@ const boss = new Person("Boss", 100, 10);
 const player = new Person("Player", 100, 10);
 
 function setup() {
+  song.play();
+  song.setVolume(0.5);
   input = createInput();
   input.size(400,40)
   input.position(600);
@@ -120,6 +136,7 @@ function draw() {
     reset = true;
 
     player.takeDMG(boss.getATK());
+    bossatk.play();
   }
 
 // Check if the player finished typing
@@ -131,6 +148,7 @@ if (textfield == correctWord) {
     attack = frameCount;
     console.log(frameCount);
     image(img4, 250, 200, 300, 350);
+    atksound.play();
   }
 
   // frame for attacking
@@ -156,19 +174,32 @@ if (textfield == correctWord) {
 
   // Check if won
   if (boss.getHP() <= 0) {
+    song.stop();
     // TODO: change this
     redrawBackground();
     textSize(64);
+    image(img5, 20, 120,260,230);
+    image(img6, 320, 0,520,690);
     text("You Won", 280, 325);
-    //TODO fatter text at the end
+    winsound.play();
+
+    //TODO fatter text at the end and the sound sounds a bit cursed...
   }
+
 
   // Check if lost
   if (player.getHP() <= 0) {
     // TODO: change this
     redrawBackground();
+    song.stop();
     textSize(64);
+    image(img7, 520, 120,180,330);
+    image(img2, 20, 130,300,300) 
     text("You Lose", 270, 325);
+    losesound.play();
+  
+}
+  
     //TODO fatter text at the end
   }
 
@@ -179,7 +210,6 @@ if (textfield == correctWord) {
 
   text("Player HP: " + player.getHP(), 5, 30);
   text("Boss HP: " + boss.getHP(), 595, 30);
-}
 
 // When the player type anything, it will be added to textfield
 function timing(){
