@@ -82,18 +82,17 @@ function setup() {
     console.log(correctWord);
     console.log(fruits);
   });
-  
-  restartButton = createButton('Restart');
+  restartButton = createButton('Restart'); //add a button to Restart
   restartButton.position(500);
   restartButton.mouseClicked(restartGame);
 }
 
 function restartGame() {
-  boss.hp = 100;
+  boss.hp = 100; //resetting all needed variables
   player.hp = 100;
   timer = 60;
   attack = -1;
-  song.stop();
+  song.stop(); //stopping all sound
   atksound.stop();
   bossatk.stop();
   losesound.stop();
@@ -102,7 +101,7 @@ function restartGame() {
   correctWord = getFruit();
 
   redrawBackground();
-  song.play();
+  song.play(); //starting the song again
   song.setVolume(0.5);
 }
 
@@ -145,16 +144,18 @@ function draw() {
   fill(255);
   rect(0,500,800,200)
   fill(255,0,0);
+  
   textSize(32);
+  strokeWeight(1);
+  text("Player HP: " + player.getHP(), 5, 30);
+  text("Boss HP: " + boss.getHP(), 595, 30);
   text(correctWord, 330,550);
-  //TODO checkis there a way to make this center all the time
 
- 
   reset = false;
 
   // Check if the player typed the wrong word
   if (wrongLetter(correctWord)) {
-    text("ur wrong", 120, 120);
+    //text("ur wrong", 120, 120);
     reset = true;
 
     player.takeDMG(boss.getATK());
@@ -169,7 +170,7 @@ if (textfield == correctWord) {
   if (attack === -1) {
     attack = frameCount;
     console.log(frameCount);
-    image(img4, 250, 200, 300, 350);
+    image(img4, 250, 150, 300, 350);
     atksound.play();
   }
 
@@ -197,20 +198,18 @@ if (textfield == correctWord) {
   // Check if won
   if (boss.getHP() <= 0) {
     song.stop();
-    // TODO: change this
     redrawBackground();
     textSize(64);
-    image(img5, 20, 120,260,230);
+    image(img5, 20, 160,260,230);
     image(img6, 320, 0,520,690);
     text("You Won", 280, 325);
     winsound.play();
-    //TODO fatter text at the end and the sound sounds a bit cursed...
+  //TO FIX, sound is weird?
   }
 
 
   // Check if lost
   if (player.getHP() <= 0) {
-    // TODO: change this
     redrawBackground();
     song.stop();
     textSize(64);
@@ -218,35 +217,17 @@ if (textfield == correctWord) {
     image(img2, 20, 130,300,300) 
     text("You Lose", 270, 325);
     losesound.play();
-
   
 }
-  
-    //TODO fatter text at the end
   }
-
-
-  // Draw healthbar
-  // Draw the health bars, player, boss, and other elements
-
-
-  text("Player HP: " + player.getHP(), 5, 30);
-  text("Boss HP: " + boss.getHP(), 595, 30);
 
 // When the player type anything, it will be added to textfield
 function timing(){
-  if (frameCount % 60 == 0 && timer > 0) {
-    timer--;
-  }
-  
-  textSize(72);
-  text(timer, 365, 80);
-  
-  if (timer == 0) {
-    text("GAME OVER", 200,325);
-
-  }
-  //TODO time overlapp
+  strokeWeight(4);
+  stroke('red')
+  fill('white');
+  circle(370, 60, 60);
+  circle(430, 60, 60);
 }
 function keyTyped() {
   textfield += key;
@@ -266,7 +247,7 @@ function wrongLetter(correctWord) {
 function drawHealthBars() {
   let barWidth = 300;
   let barHeight = 40;
-
+  stroke('white')
   fill(255);
   rect(0, 40, barWidth, barHeight);
   fill(255, 0, 0);
